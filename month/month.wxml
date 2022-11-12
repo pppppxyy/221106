@@ -1,0 +1,47 @@
+<!--pages/month/month.wxml-->
+<!--pages/calendar/calendar.wxml-->
+<view class="calendar-page">
+  <view class="calendar">
+    <view class="btn-row">
+      <!-- <text bindtap="changeDate" data-type="preYear">＜年</text> -->
+      <text bindtap="changeDate" data-type="preMonth">＜</text>
+      <view>
+      {{nowYear + "-" + (nowMonth >= 10 ? nowMonth : "0" + nowMonth)}}
+      </view>
+      <text bindtap="changeDate" data-type="nextMonth">＞</text>
+      <!-- <text bindtap="changeDate" data-type="nextYear">年＞</text> -->
+    </view>
+    <!-- <text>\n</text> -->
+    <view class="week-row">
+      <view class="week-item"  wx:for="{{week}}" wx:key="index">{{item}}</view>
+    </view>
+    <!-- <text>\n</text> -->
+    <view class="day-row" wx:for="{{totalDay}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+      <view wx:for="{{item}}" wx:for-item="subItem" wx:for-index="subIndex" wx:key="subIndex"
+      class="day-item {{subItem.today?'day-today':''}}{{subItem.otherMonth?'day-otherMonth':''}}" >
+        <text>{{subItem.day}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="legend">
+  <view class="forecast">
+    <image class="pink" src='../../png/calendar/pink.png'></image>
+    <text class="f_text"> 预测经期</text>
+  </view>
+  <view class="pai">
+    <image class="green" src='../../png/calendar/green.png'></image>
+    <text class="p_text"> 排卵期</text>
+  </view>
+  <view class="coming">
+    <image class="red" src='../../png/calendar/red.png'></image>
+    <text class="c_text"> 月经期</text>
+  </view>
+</view> 
+<button class="jump" plain="true" bindtap="goTo">
+    <image class="jump1" src='/png/calendar/explain.png'></image>
+</button>
+<text class="already">距离上次月经已____天</text>
+
+
+
